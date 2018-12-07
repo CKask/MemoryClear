@@ -19,6 +19,9 @@ namespace MemoryClear
         public static extern bool SendMessage(IntPtr hwnd, int wMsg, int wParam, int lParam);
 
         private bool _isAutoCLear;
+        /// <summary>
+        /// 是否在自动清理中
+        /// </summary>
         public bool IsAutoClear
         {
             get
@@ -60,6 +63,10 @@ namespace MemoryClear
             }
         }
 
+        /// <summary>
+        /// 默认带参构造函数
+        /// </summary>
+        /// <param name="fms"></param>
         public StatusPercent(FormMain fms)
         {
             frm = fms;
