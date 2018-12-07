@@ -63,9 +63,9 @@ namespace MemoryClear.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap _902397dda144ad34478efb09d6a20cf431ad850e__1_ {
+        internal static System.Drawing.Bitmap timer {
             get {
-                object obj = ResourceManager.GetObject("902397dda144ad34478efb09d6a20cf431ad850e (1)", resourceCulture);
+                object obj = ResourceManager.GetObject("timer", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace MemoryClear.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap _static {
+        internal static System.Drawing.Bitmap timer1 {
             get {
-                object obj = ResourceManager.GetObject("static", resourceCulture);
+                object obj = ResourceManager.GetObject("timer1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

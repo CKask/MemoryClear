@@ -84,19 +84,19 @@
             this.开始ToolStripMenuItem,
             this.退出ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(173, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(149, 48);
             // 
             // 开始ToolStripMenuItem
             // 
             this.开始ToolStripMenuItem.Name = "开始ToolStripMenuItem";
-            this.开始ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.开始ToolStripMenuItem.Text = "开始定时清理内存";
+            this.开始ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.开始ToolStripMenuItem.Text = "开始清理内存";
             this.开始ToolStripMenuItem.Click += new System.EventHandler(this.开始ToolStripMenuItem_Click);
             // 
             // 退出ToolStripMenuItem
             // 
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
@@ -246,12 +246,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnStop;
-        private System.Windows.Forms.Timer Timer;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblMemory;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox cboxStartBySelf;
         public System.Windows.Forms.Timer TimerShow;
+        public System.Windows.Forms.Timer Timer;
     }
 }
 

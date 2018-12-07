@@ -32,13 +32,13 @@ namespace MemoryClear
         public int iActulaWidth { get; set; }
         public int iActulaHeight { get; set; }
 
-        private bool IsClear;
+      
 
         public event EventHandler ShowMemoryPercent;
         /// <summary>
         /// 状态窗体
         /// </summary>
-        Status frm;
+        StatusPercent frm;
 
 
 
@@ -132,6 +132,8 @@ namespace MemoryClear
                 contextMenuStrip1.Items[0].Enabled = false;
                 this.Hide();
             }
+            frm = new StatusPercent(this);
+           
         }
         /// <summary>
         /// 菜单开始
@@ -170,7 +172,7 @@ namespace MemoryClear
         private void button1_Click(object sender, EventArgs e)
         {
             Start();
-            contextMenuStrip1.Items[0].Enabled = false;
+            
             this.Hide();
            
         }
@@ -185,7 +187,8 @@ namespace MemoryClear
             ShowMemoryPercent = null;
             if (frm != null)
             {
-                frm.Close();
+               
+                frm.Hide();
             }
 
         }
@@ -193,13 +196,19 @@ namespace MemoryClear
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.Hide();
+            if (frm == null)
+            {
+                frm = new StatusPercent(this);
+              
+            }
+            frm.Show();
             e.Cancel = true;
         }
 
         /// <summary>
         /// 开始
         /// </summary>
-        private void Start()
+        public void Start()
         {
             SaveConfig("MemoryValue", MemoryValue.ToString());
             SaveConfig("MemoryMinute", MemoryMinute.ToString());
@@ -208,13 +217,17 @@ namespace MemoryClear
             txtValue.Enabled = false;
             btnStart.Enabled = false;
             btnStop.Enabled = true;
-
+            contextMenuStrip1.Items[0].Enabled = false;
             //设置timer
             Timer.Interval = (int)(MemoryMinute * 60 * 1000);
             Timer.Start();
-            frm = new Status(this);
-            ShowMemoryPercent += frm.Status_ShowMemoryPercent;
-
+            if(frm==null)
+            {
+                
+                frm = new StatusPercent(this);
+               
+            }
+            frm.IsAutoClear = true;
             frm.Show();
         }
         /// <summary>
@@ -245,10 +258,22 @@ namespace MemoryClear
         /// <param name="e"></param>
         private void btnStop_Click(object sender, EventArgs e)
         {
+            Stop();
+        }
+
+        public void Stop()
+        {
             txtM.Enabled = true;
             txtValue.Enabled = true;
             btnStart.Enabled = true;
             btnStop.Enabled = false;
+            Timer.Stop();
+            if (frm == null)
+            {
+                frm = new StatusPercent(this);
+
+            }
+            frm.IsAutoClear = false;
             contextMenuStrip1.Items[0].Enabled = true;
         }
 
@@ -267,13 +292,10 @@ namespace MemoryClear
                     Percent = Math.Round(((PhysicalMemory - MemoryAvailable) / PhysicalMemory) * 100, 2);
                     lblMemory.Text = Percent.ToString();
                 }));
-                Model model = new Model();
-                model.Percent = Percent;
-                model.IsClear = IsClear;
-                ShowMemoryPercent?.Invoke(model, null);
+                
 
             });
-
+            frm.Percent = Percent;
         }
         /// <summary>
         /// 获取可用内存
