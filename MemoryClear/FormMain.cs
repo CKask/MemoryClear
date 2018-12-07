@@ -291,7 +291,7 @@ namespace MemoryClear
                     Percent = Math.Round(((PhysicalMemory - MemoryAvailable) / PhysicalMemory) * 100, 2);
                     lblMemory.Text = Percent.ToString();
                 }));
-            });
+            }); 
             frm.Percent = Percent;
         }
         /// <summary>
