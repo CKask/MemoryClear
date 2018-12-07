@@ -237,7 +237,7 @@ namespace MemoryClear
         /// <param name="e"></param>
         private void Timer_Tick(object sender, EventArgs e)
         {
-            Task.Factory.StartNew(() =>
+          Task t=Task.Factory.StartNew(() =>
             {
                 if (Percent > MemoryValue)
                 {
@@ -248,9 +248,9 @@ namespace MemoryClear
                     //  notifyIcon.ShowBalloonTip(500, "Clear", $"现在内存占有率{Percent}%", ToolTipIcon.Info);
                 }
             });
+           
+           
         }
-
-
         /// <summary>
         /// 停止按钮
         /// </summary>
@@ -260,7 +260,6 @@ namespace MemoryClear
         {
             Stop();
         }
-
         public void Stop()
         {
             txtM.Enabled = true;
@@ -284,7 +283,7 @@ namespace MemoryClear
         /// <param name="e"></param>
         private void TimerShow_Tick(object sender, EventArgs e)
         {
-            Task.Factory.StartNew(() =>
+           Task t= Task.Factory.StartNew(() =>
             {
                 MemoryAvailable = GetAvailableMemory();
                 lblMemory.Invoke(new Action(() =>
@@ -292,8 +291,6 @@ namespace MemoryClear
                     Percent = Math.Round(((PhysicalMemory - MemoryAvailable) / PhysicalMemory) * 100, 2);
                     lblMemory.Text = Percent.ToString();
                 }));
-                
-
             });
             frm.Percent = Percent;
         }
@@ -434,15 +431,5 @@ namespace MemoryClear
             doc.Save(strFileName);
             System.Configuration.ConfigurationManager.RefreshSection("appSettings");
         }
-    }
-   
-
-    /// <summary>
-    /// 数据传输model
-    /// </summary>
-    public class Model
-    {
-        public double Percent { get; set; }
-        public bool IsClear { get; set; }
     }
 }
