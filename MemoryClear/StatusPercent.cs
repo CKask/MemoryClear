@@ -80,6 +80,7 @@ namespace MemoryClear
             this.Left = Screen.PrimaryScreen.Bounds.Width - 80;
             this.Width = 60;
             this.Height = 25;
+           
         }
 
         private void 显示主界面ToolStripMenuItem_Click(object sender, EventArgs e)

@@ -122,17 +122,11 @@ namespace MemoryClear
             }
             catch (Exception)
             {
-
                 cboxStartBySelf.Checked = false;
             }
-
-            if (cboxStartBySelf.Checked)
-            {
-                Start();
-                contextMenuStrip1.Items[0].Enabled = false;
-                this.Hide();
-            }
             frm = new StatusPercent(this);
+           
+           
            
         }
         /// <summary>
@@ -143,7 +137,6 @@ namespace MemoryClear
         private void 开始ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Start();
-            contextMenuStrip1.Items[0].Enabled = false;
             this.Hide();
         }
         /// <summary>
@@ -158,7 +151,6 @@ namespace MemoryClear
             if (frm != null)
             {
                 ShowMemoryPercent = null;
-
                 frm.Close();
             }
             Application.Exit();
@@ -172,7 +164,6 @@ namespace MemoryClear
         private void button1_Click(object sender, EventArgs e)
         {
             Start();
-            
             this.Hide();
            
         }
@@ -272,6 +263,7 @@ namespace MemoryClear
                 frm = new StatusPercent(this);
 
             }
+            frm.Hide();
             frm.IsAutoClear = false;
             contextMenuStrip1.Items[0].Enabled = true;
         }
@@ -430,6 +422,16 @@ namespace MemoryClear
             //保存上面的修改  
             doc.Save(strFileName);
             System.Configuration.ConfigurationManager.RefreshSection("appSettings");
+        }
+
+        private void FormMain_Shown(object sender, EventArgs e)
+        {
+            if (cboxStartBySelf.Checked)
+            {
+                this.Hide();
+                Start();
+               
+            }
         }
     }
 }
