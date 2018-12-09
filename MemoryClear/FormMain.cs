@@ -430,8 +430,10 @@ namespace MemoryClear
             {
                 this.Hide();
                 Start();
-               
+
             }
         }
+
+       
     }
 }
